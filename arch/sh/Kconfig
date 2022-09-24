@@ -696,8 +696,9 @@ config NR_CPUS
 	  This is purely to save memory - each supported CPU adds
 	  approximately eight kilobytes to the kernel image.
 
-config HOTPLUG_CPU
+config HOTPLUG_CPU	
 	bool "Support for hot-pluggable CPUs (EXPERIMENTAL)"
+	default n
 	depends on SMP
 	help
 	  Say Y here to experiment with turning CPUs off and on.  CPUs
