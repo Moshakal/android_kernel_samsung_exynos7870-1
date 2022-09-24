@@ -1517,26 +1517,16 @@ CONFIG_QCA9377_LDO_RESET=y
 CONFIG_WLAN_QCA9377_DUAL_BDF=0
 CONFIG_CNSS_SDIO=y
 CONFIG_WLAN_SSR_ENABLED=y
-CONFIG_WCNSS_MEM_PRE_ALLOC=y
-# CONFIG_ATH_CARDS is not set
-# CONFIG_BCM4330 is not set
-# CONFIG_BCM4343 is not set
-# CONFIG_BCM4334 is not set
-# CONFIG_BCM4335 is not set
-# CONFIG_BCM4339 is not set
-# CONFIG_BCM4354 is not set
-# CONFIG_BCM43241 is not set
-# CONFIG_BCM43455 is not set
-# CONFIG_BCM4334W is not set
-# CONFIG_BCM43454 is not set
-CONFIG_BCMDHD_FW_PATH="/etc/wifi/bcmdhd_sta.bin"
-CONFIG_BCMDHD_NVRAM_PATH="/etc/wifi/nvram_net.txt"
-# CONFIG_BROADCOM_WIFI is not set
-# CONFIG_BRCMFMAC is not set
-# CONFIG_HOSTAP is not set
-# CONFIG_LIBERTAS is not set
-# CONFIG_WL_TI is not set
-# CONFIG_MWIFIEX is not set
+export ARCH=arm64
+export ANDROID_MAJOR_VERSION=o
+export CROSS_COMPILE=/home/mohamed/samsung-exynos9820-toolchain-default/gcc-cfp/gcc-cfp-jopp-only/aarch64-linux-android-4.9/bin/aarch64-linux-android-
+
+make clean
+make mrproper
+
+make tw-gtaxllte_defconfig
+
+make -j4
 
 #
 # Enable WiMAX (Networking options) to see the WiMAX drivers
