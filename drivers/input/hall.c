@@ -111,7 +111,7 @@ static void flip_cover_work(struct work_struct *work)
 #ifdef CONFIG_HALL_EVENT_REVERSE
 		input_report_switch(ddata->input, SW_FLIP, !flip_cover);
 #else
-		input_report_switch(ddata->input, SW_FLIP, flip_cover);
+		input_report_switch(ddata->input, SW_LID, !flip_cover);
 #endif
 		input_sync(ddata->input);
 #if defined(CONFIG_HALL_NOTIFIER)
@@ -138,7 +138,7 @@ static void flip_cover_work(struct work_struct *work)
 #ifdef CONFIG_HALL_EVENT_REVERSE
 	input_report_switch(ddata->input, SW_FLIP, !flip_cover);
 #else
-	input_report_switch(ddata->input, SW_FLIP, flip_cover);
+	input_report_switch(ddata->input, SW_LID, !flip_cover);
 #endif
 	input_sync(ddata->input);
 #if defined(CONFIG_HALL_NOTIFIER)
@@ -307,7 +307,7 @@ static int hall_probe(struct platform_device *pdev)
 	input->dev.parent = &pdev->dev;
 
 	input->evbit[0] |= BIT_MASK(EV_SW);
-	input_set_capability(input, EV_SW, SW_FLIP);
+	input_set_capability(input, EV_SW, SW_LID);
 
 	input->open = hall_open;
 	input->close = hall_close;
